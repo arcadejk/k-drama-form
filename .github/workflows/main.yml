@@ -1,0 +1,17 @@
+name: Store Form Information
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Store Form Data
+        run: echo "${{ toJson(github.event) }}" > form-data.json
